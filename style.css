@@ -224,36 +224,17 @@ section { padding: 72px 24px; max-width: var(--max); margin: 0 auto; }
 .btn-audio {
   background: var(--sage-light);
   color: var(--sage);
-  border: 2px solid var(--sage);
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  transition: background 0.2s, transform 0.1s;
-  min-width: 130px;
-  justify-content: center;
-  letter-spacing: 0.02em;
+  gap: 6px;
+  transition: background 0.2s;
 }
-.btn-audio:hover {
-  background: #D0E4D1;
-  transform: translateY(-1px);
-}
-.btn-audio:focus-visible {
-  outline: 3px solid var(--gold);
-  outline-offset: 3px;
-}
-.btn-audio--playing {
-  background: var(--sage);
-  color: white;
-  border-color: var(--sage);
-}
-.btn-audio--playing:hover {
-  background: #5C8060;
-}
+.btn-audio:hover { background: #D0E4D1; }
 
 /* SONG CARD */
 .song-card {

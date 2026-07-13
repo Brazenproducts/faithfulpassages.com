@@ -1,0 +1,21 @@
+# Robots.txt for faithfulpassages.com
+# Generated: 2026-07-13
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Specific crawlers
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://faithfulpassages.com/sitemap.xml

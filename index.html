@@ -21,7 +21,52 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" style="position:relative; overflow:hidden;">
+
+  <!-- Decorative SVG: subtle cross top-left -->
+  <svg style="position:absolute;top:24px;left:32px;opacity:0.12;" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="2" width="8" height="44" rx="3" fill="#C9A84C"/>
+    <rect x="4" y="16" width="40" height="8" rx="3" fill="#C9A84C"/>
+  </svg>
+
+  <!-- Decorative SVG: subtle cross top-right -->
+  <svg style="position:absolute;top:32px;right:40px;opacity:0.10;" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="1" width="6" height="34" rx="2.5" fill="#7A9E7E"/>
+    <rect x="3" y="12" width="30" height="6" rx="2.5" fill="#7A9E7E"/>
+  </svg>
+
+  <!-- Decorative SVG: dove (center top) -->
+  <svg style="display:block;margin:0 auto 20px;opacity:0.22;" width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- body -->
+    <ellipse cx="34" cy="24" rx="16" ry="10" fill="#C9A84C"/>
+    <!-- head -->
+    <ellipse cx="50" cy="18" rx="7" ry="6" fill="#C9A84C"/>
+    <!-- beak -->
+    <polygon points="57,17 63,19 57,21" fill="#B8943E"/>
+    <!-- tail -->
+    <polygon points="18,24 4,18 18,30" fill="#C9A84C"/>
+    <!-- wing -->
+    <ellipse cx="32" cy="18" rx="14" ry="7" fill="#E8D090" transform="rotate(-12 32 18)"/>
+    <!-- olive branch line -->
+    <line x1="50" y1="26" x2="44" y2="33" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="43" cy="34" rx="3" ry="2" fill="#7A9E7E"/>
+    <ellipse cx="47" cy="31" rx="2.5" ry="1.8" fill="#7A9E7E"/>
+  </svg>
+
+  <!-- Decorative stars/light rays bottom corners -->
+  <svg style="position:absolute;bottom:20px;left:24px;opacity:0.13;" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <line x1="16" y1="0" x2="16" y2="32" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="0" y1="16" x2="32" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="4" y1="4" x2="28" y2="28" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="28" y1="4" x2="4" y2="28" stroke="#C9A84C" stroke-width="1"/>
+  </svg>
+  <svg style="position:absolute;bottom:20px;right:24px;opacity:0.10;" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <line x1="14" y1="0" x2="14" y2="28" stroke="#7B9EB9" stroke-width="1.5"/>
+    <line x1="0" y1="14" x2="28" y2="14" stroke="#7B9EB9" stroke-width="1.5"/>
+    <line x1="3" y1="3" x2="25" y2="25" stroke="#7B9EB9" stroke-width="1"/>
+    <line x1="25" y1="3" x2="3" y2="25" stroke="#7B9EB9" stroke-width="1"/>
+  </svg>
+
   <p class="hero-eyebrow">Scripture · Prayer · Worship</p>
   <h1>Faith for the Life You're Actually Living</h1>
   <p>Scripture made clear. Prayers made personal. Worship songs for today. Daily encouragement grounded in God's word.</p>
@@ -46,6 +91,25 @@
       <span class="verse-ref">— Matthew 11:28</span>
     </div>
   </div>
+</div>
+
+<!-- DECORATIVE DIVIDER: crosses + stars -->
+<div style="text-align:center; padding: 28px 0 0; background: var(--ivory);">
+  <svg width="320" height="32" viewBox="0 0 320 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.25;">
+    <!-- left line -->
+    <line x1="0" y1="16" x2="110" y2="16" stroke="#C9A84C" stroke-width="1"/>
+    <!-- small star left -->
+    <line x1="120" y1="8" x2="120" y2="24" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="112" y1="16" x2="128" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
+    <!-- center cross -->
+    <rect x="152" y="4" width="5" height="24" rx="2" fill="#C9A84C"/>
+    <rect x="143" y="12" width="23" height="5" rx="2" fill="#C9A84C"/>
+    <!-- small star right -->
+    <line x1="200" y1="8" x2="200" y2="24" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="192" y1="16" x2="208" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
+    <!-- right line -->
+    <line x1="210" y1="16" x2="320" y2="16" stroke="#C9A84C" stroke-width="1"/>
+  </svg>
 </div>
 
 <!-- WHAT WE OFFER -->
@@ -78,6 +142,18 @@
 </section>
 
 <hr class="divider">
+
+<!-- DECORATIVE ANGEL WINGS -->
+<div style="text-align:center; padding: 36px 0 8px; background: var(--ivory);">
+  <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.18;">
+    <!-- left wing -->
+    <path d="M100 30 C80 10, 40 5, 10 20 C30 22, 50 26, 70 32 C50 28, 20 30, 8 42 C28 38, 58 34, 80 38 C60 36, 30 44, 20 54 C42 46, 68 40, 88 44 Z" fill="#C9A84C"/>
+    <!-- right wing -->
+    <path d="M100 30 C120 10, 160 5, 190 20 C170 22, 150 26, 130 32 C150 28, 180 30, 192 42 C172 38, 142 34, 120 38 C140 36, 170 44, 180 54 C158 46, 132 40, 112 44 Z" fill="#C9A84C"/>
+    <!-- center halo circle -->
+    <circle cx="100" cy="14" r="9" stroke="#C9A84C" stroke-width="2" fill="none"/>
+  </svg>
+</div>
 
 <!-- FEATURED PRAYERS -->
 <section>

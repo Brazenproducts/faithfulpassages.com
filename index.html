@@ -34,6 +34,9 @@
     }
     .dedication-name { font-size: 1.15rem; font-weight: 700; margin: 0 0 5px; font-family: Georgia, serif; }
     .dedication-verse { font-size: 0.88rem; opacity: 0.88; margin: 0; font-style: italic; }
+    .ded-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+    .ded-btn { display: inline-block; padding: 10px 26px; border-radius: 30px; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.03em; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); }
+    .ded-btn-share { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
 
     /* ── HERO ── */
     .hero-v2 {
@@ -253,28 +256,10 @@
     <p class="dedication-name">Julie D. from Connecticut &mdash; Surgery This Week</p>
     <p class="dedication-verse">&ldquo;For I will restore health to you, and your wounds I will heal, declares the Lord.&rdquo; &mdash; Jeremiah 30:17<br>
     <span style="font-style:normal;opacity:0.75;">We are praying for God&rsquo;s healing hand, steady physicians, and peace that surpasses understanding.</span></p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px;align-items:center;">
-      <a href="prayer-for-julie-surgery.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);color:white;text-decoration:none;padding:10px 24px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;line-height:1;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;"><circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/><polygon points="5.5,4.5 10.5,7 5.5,9.5" fill="white"/></svg>
-        Pray for Julie
-      </a>
-      <button onclick="shareJuliePrayer(this)" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:white;padding:10px 24px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;line-height:1;cursor:pointer;transition:background 0.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg>
-        Share This Prayer
-      </button>
+    <div class="ded-btns">
+      <a href="prayer-for-julie-surgery.html" class="ded-btn">&#9654; Pray for Julie</a>
+      <a href="prayer-for-julie-surgery.html" class="ded-btn ded-btn-share" id="sharePrayerBtn">&#8679; Share This Prayer</a>
     </div>
-    <script>
-      function shareJuliePrayer(btn) {
-        var url = 'https://faithfulpassages.com/prayer-for-julie-surgery.html';
-        var title = 'A Prayer for Julie — Facing Surgery';
-        var text = 'Our community is praying for Julie D. from Connecticut as she faces surgery this week. Read and listen to this prayer for her healing.';
-        if (navigator.share) {
-          navigator.share({ title: title, text: text, url: url });
-        } else {
-          window.open('https://faithfulpassages.com/prayer-for-julie-surgery.html', '_blank');
-        }
-      }
-    </script>
   </div>
 </div>
 
@@ -532,5 +517,19 @@ I will dwell in Your house, home at last</div>
 </footer>
 
 <script src="app.js"></script>
+<script>
+  var shareBtn = document.getElementById('sharePrayerBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var url = 'https://faithfulpassages.com/prayer-for-julie-surgery.html';
+      if (navigator.share) {
+        navigator.share({ title: 'A Prayer for Julie — Facing Surgery', text: 'Our community is praying for Julie D. from Connecticut as she faces surgery this week.', url: url });
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  }
+</script>
 </body>
 </html>

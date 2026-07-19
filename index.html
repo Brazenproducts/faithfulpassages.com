@@ -258,32 +258,21 @@
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;"><circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/><polygon points="5.5,4.5 10.5,7 5.5,9.5" fill="white"/></svg>
         Pray for Julie
       </a>
-      <button onclick="copyJulieLink(this)" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:white;padding:10px 24px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;line-height:1;cursor:pointer;transition:background 0.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+      <button onclick="shareJuliePrayer(this)" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:white;padding:10px 24px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;line-height:1;cursor:pointer;transition:background 0.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg>
         Share This Prayer
       </button>
     </div>
     <script>
-      function copyJulieLink(btn) {
-        const url = 'https://faithfulpassages.com/prayer-for-julie-surgery.html';
-        const copied = function() {
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!';
-          setTimeout(() => { btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg> Share This Prayer'; }, 2500);
-        };
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(url).then(copied).catch(function() { fallbackCopy(url, copied); });
+      function shareJuliePrayer(btn) {
+        var url = 'https://faithfulpassages.com/prayer-for-julie-surgery.html';
+        var title = 'A Prayer for Julie — Facing Surgery';
+        var text = 'Our community is praying for Julie D. from Connecticut as she faces surgery this week. Read and listen to this prayer for her healing.';
+        if (navigator.share) {
+          navigator.share({ title: title, text: text, url: url });
         } else {
-          fallbackCopy(url, copied);
+          window.open('https://faithfulpassages.com/prayer-for-julie-surgery.html', '_blank');
         }
-      }
-      function fallbackCopy(text, cb) {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
-        document.body.appendChild(ta);
-        ta.focus(); ta.select();
-        try { document.execCommand('copy'); cb(); } catch(e) { alert('Copy this link: ' + text); }
-        document.body.removeChild(ta);
       }
     </script>
   </div>

@@ -253,10 +253,25 @@
     <p class="dedication-name">Julie D. from Connecticut &mdash; Surgery This Week</p>
     <p class="dedication-verse">&ldquo;For I will restore health to you, and your wounds I will heal, declares the Lord.&rdquo; &mdash; Jeremiah 30:17<br>
     <span style="font-style:normal;opacity:0.75;">We are praying for God&rsquo;s healing hand, steady physicians, and peace that surpasses understanding.</span></p>
-    <a href="prayer-for-julie-surgery.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);color:white;text-decoration:none;padding:9px 22px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/><polygon points="5.5,4.5 10.5,7 5.5,9.5" fill="white"/></svg>
-      Pray for Julie
-    </a>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+      <a href="prayer-for-julie-surgery.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);color:white;text-decoration:none;padding:9px 22px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/><polygon points="5.5,4.5 10.5,7 5.5,9.5" fill="white"/></svg>
+        Pray for Julie
+      </a>
+      <button onclick="copyJulieLink(this)" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:white;padding:9px 22px;border-radius:30px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg>
+        Share This Prayer
+      </button>
+    </div>
+    <script>
+      function copyJulieLink(btn) {
+        const url = window.location.origin + '/prayer-for-julie-surgery.html';
+        navigator.clipboard.writeText(url).then(() => {
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Link Copied!';
+          setTimeout(() => { btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg> Share This Prayer'; }, 2500);
+        });
+      }
+    </script>
   </div>
 </div>
 

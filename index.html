@@ -265,11 +265,25 @@
     </div>
     <script>
       function copyJulieLink(btn) {
-        const url = window.location.origin + '/prayer-for-julie-surgery.html';
-        navigator.clipboard.writeText(url).then(() => {
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Link Copied!';
+        const url = 'https://faithfulpassages.com/prayer-for-julie-surgery.html';
+        const copied = function() {
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!';
           setTimeout(() => { btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="1" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2"/><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="white" stroke-width="1.2" fill="rgba(255,255,255,0.1)"/></svg> Share This Prayer'; }, 2500);
-        });
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(copied).catch(function() { fallbackCopy(url, copied); });
+        } else {
+          fallbackCopy(url, copied);
+        }
+      }
+      function fallbackCopy(text, cb) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); cb(); } catch(e) { alert('Copy this link: ' + text); }
+        document.body.removeChild(ta);
       }
     </script>
   </div>

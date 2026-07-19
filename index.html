@@ -7,6 +7,232 @@
   <meta name="description" content="Scripture made clear. Prayers made personal. Faith made daily. Free prayers, verse meanings, and devotional resources for everyday believers.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    /* ── PRAYER DEDICATION ── */
+    .dedication-band {
+      background: linear-gradient(135deg, #2a3f6f 0%, #4a6fa5 100%);
+      color: white;
+      text-align: center;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dedication-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M28 2h4v56h-4zM2 28h56v4H2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .dedication-band .inner { position: relative; max-width: 680px; margin: 0 auto; }
+    .dedication-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      opacity: 0.75; margin: 0 0 6px; display: flex; align-items: center;
+      justify-content: center; gap: 10px;
+    }
+    .dedication-eyebrow::before, .dedication-eyebrow::after {
+      content: ''; display: inline-block; width: 32px; height: 1px; background: rgba(255,255,255,0.4);
+    }
+    .dedication-name { font-size: 1.15rem; font-weight: 700; margin: 0 0 5px; font-family: Georgia, serif; }
+    .dedication-verse { font-size: 0.88rem; opacity: 0.88; margin: 0; font-style: italic; }
+
+    /* ── HERO ── */
+    .hero-v2 {
+      background: linear-gradient(160deg, #F5EDD6 0%, #EAF0E9 60%, #E4EAF5 100%);
+      text-align: center;
+      padding: 64px 24px 56px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #E0D8CC;
+    }
+    .hero-v2 h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #2C2C2C;
+      line-height: 1.2;
+      margin: 16px auto 18px;
+      max-width: 620px;
+    }
+    .hero-v2 .eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #7A9E7E; margin: 0;
+    }
+    .hero-v2 .sub {
+      color: #6A6A6A; font-size: 1.05rem; max-width: 500px;
+      margin: 0 auto 32px; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── VERSE BAND (dark) ── */
+    .verse-band {
+      background: #1E1E1E;
+      color: white;
+      padding: 52px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .verse-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+    .verse-band-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    .verse-band-label {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #C9A84C; margin-bottom: 20px;
+    }
+    .verse-band-text {
+      font-family: Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      line-height: 1.6;
+      color: #F0EAE0;
+      font-style: italic;
+    }
+    .verse-band-ref {
+      display: block; margin-top: 16px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.1em;
+      color: #C9A84C; font-style: normal;
+    }
+    /* cross watermark */
+    .verse-band-cross {
+      position: absolute; opacity: 0.06;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── WHAT WE OFFER (alternating) ── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media(max-width:620px) { .offer-grid { grid-template-columns: 1fr; } }
+    .offer-cell {
+      padding: 48px 36px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .offer-cell:nth-child(1) { background: #FAF7F2; border-right: 1px solid #E8E2D8; border-bottom: 1px solid #E8E2D8; }
+    .offer-cell:nth-child(2) { background: #F0F5F0; border-bottom: 1px solid #E8E2D8; }
+    .offer-cell:nth-child(3) { background: #EFF3F7; border-right: 1px solid #E8E2D8; }
+    .offer-cell:nth-child(4) { background: #FDF6E8; }
+    .offer-icon { margin-bottom: 4px; }
+    .offer-cell h3 { font-family: Georgia, serif; font-size: 1.15rem; color: #2C2C2C; }
+    .offer-cell p { color: #6A6A6A; font-size: 0.92rem; line-height: 1.65; }
+
+    /* ── PRAYERS (side by side) ── */
+    .prayers-section {
+      background: #FAF7F2;
+      padding: 64px 24px;
+      border-top: 1px solid #E8E2D8;
+      border-bottom: 1px solid #E8E2D8;
+    }
+    .prayers-section-inner { max-width: 860px; margin: 0 auto; }
+    .prayers-header { text-align: center; margin-bottom: 40px; }
+    .prayers-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media(max-width:620px) { .prayers-two-col { grid-template-columns: 1fr; } }
+    .prayer-tile {
+      background: white;
+      border-radius: 14px;
+      padding: 32px 28px;
+      border: 1px solid #EDE8DE;
+      position: relative;
+      overflow: hidden;
+    }
+    .prayer-tile::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #C9A84C, #7A9E7E);
+    }
+    .prayer-tile h3 { font-family: Georgia, serif; font-size: 1.1rem; color: #2C2C2C; margin-bottom: 6px; }
+    .prayer-tile .tag {
+      display: inline-block; background: #E8F0E9; color: #5A7E5E;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .prayer-tile p { font-family: Georgia, serif; font-size: 0.97rem; color: #3A3A3A; line-height: 1.8; font-style: italic; }
+    .prayer-tile .actions { margin-top: 18px; display: flex; gap: 12px; align-items: center; }
+
+    /* ── SONG SECTION (warm dark) ── */
+    .song-section {
+      background: linear-gradient(135deg, #2C1F0E 0%, #3D2B14 100%);
+      color: white;
+      padding: 64px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .song-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='38' stroke='%23C9A84C' stroke-opacity='0.04' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E") repeat;
+      opacity: 0.6;
+    }
+    .song-section-inner { position: relative; max-width: 680px; margin: 0 auto; }
+    .song-section .section-label { color: #C9A84C; }
+    .song-section h2 { font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); color: #F5EDD6; margin-bottom: 10px; }
+    .song-section .sub { color: #AAA; font-size: 0.97rem; margin-bottom: 32px; }
+    .song-tile {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+      padding: 32px;
+      backdrop-filter: blur(4px);
+    }
+    .song-tile h3 { font-family: Georgia, serif; font-size: 1.2rem; color: #F5EDD6; margin-bottom: 4px; }
+    .song-tile .meta { color: #C9A84C; font-size: 0.82rem; margin-bottom: 20px; letter-spacing: 0.04em; }
+    .song-tile .lyrics { font-family: Georgia, serif; font-size: 0.97rem; color: #D5CAB8; line-height: 2; white-space: pre-line; }
+    .song-tile .chorus-label { font-weight: bold; color: #E8D090; }
+
+    /* ── SCRIPTURE HIGHLIGHT ── */
+    .scripture-highlight {
+      background: #EFF3F7;
+      border-top: 1px solid #D8E2EC;
+      border-bottom: 1px solid #D8E2EC;
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .scripture-highlight-inner { max-width: 640px; margin: 0 auto; }
+    .scripture-highlight blockquote {
+      font-family: Georgia, serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: #2C2C2C;
+      font-style: italic;
+      line-height: 1.7;
+      margin: 0 0 16px;
+      position: relative;
+      padding: 0 24px;
+    }
+    .scripture-highlight blockquote::before {
+      content: '\201C';
+      position: absolute; left: 0; top: -8px;
+      font-size: 3rem; color: #C9A84C; opacity: 0.5;
+      font-style: normal; line-height: 1;
+    }
+    .scripture-highlight cite { font-style: normal; font-size: 0.82rem; letter-spacing: 0.1em; color: #7B9EB9; }
+
+    /* ── EMAIL ── */
+    .email-v2 {
+      background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
+      color: white;
+      text-align: center;
+      padding: 72px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .email-v2::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(122,158,122,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(123,158,185,0.08) 0%, transparent 60%);
+    }
+    .email-v2-inner { position: relative; }
+    .email-v2 h2 { font-family: Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 10px; }
+    .email-v2 .sub { color: #AAA; font-size: 0.97rem; margin-bottom: 32px; }
+  </style>
 </head>
 <body>
 
@@ -20,204 +246,220 @@
   </ul>
 </nav>
 
+<!-- PRAYER DEDICATION -->
+<div class="dedication-band">
+  <div class="inner">
+    <p class="dedication-eyebrow">This Week&rsquo;s Prayer Dedication</p>
+    <p class="dedication-name">Julie D. from Connecticut &mdash; Surgery This Week</p>
+    <p class="dedication-verse">&ldquo;He heals the brokenhearted and binds up their wounds.&rdquo; &mdash; Psalm 147:3<br>
+    <span style="font-style:normal;opacity:0.75;">We pray for God&rsquo;s healing hand, steady physicians, and peace that surpasses understanding.</span></p>
+  </div>
+</div>
+
 <!-- HERO -->
-<div class="hero" style="position:relative; overflow:hidden;">
+<div class="hero-v2">
 
-  <!-- Decorative SVG: subtle cross top-left -->
-  <svg style="position:absolute;top:24px;left:32px;opacity:0.12;" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="2" width="8" height="44" rx="3" fill="#C9A84C"/>
-    <rect x="4" y="16" width="40" height="8" rx="3" fill="#C9A84C"/>
+  <!-- Corner crosses -->
+  <svg style="position:absolute;top:20px;left:28px;opacity:0.14;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+    <rect x="18" y="2" width="8" height="40" rx="3" fill="#C9A84C"/>
+    <rect x="4" y="15" width="36" height="8" rx="3" fill="#C9A84C"/>
+  </svg>
+  <svg style="position:absolute;top:20px;right:28px;opacity:0.11;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect x="15" y="2" width="6" height="32" rx="2.5" fill="#7A9E7E"/>
+    <rect x="3" y="13" width="30" height="6" rx="2.5" fill="#7A9E7E"/>
   </svg>
 
-  <!-- Decorative SVG: subtle cross top-right -->
-  <svg style="position:absolute;top:32px;right:40px;opacity:0.10;" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="15" y="1" width="6" height="34" rx="2.5" fill="#7A9E7E"/>
-    <rect x="3" y="12" width="30" height="6" rx="2.5" fill="#7A9E7E"/>
+  <!-- Dove -->
+  <svg style="position:absolute;bottom:18px;right:36px;opacity:0.13;" width="72" height="44" viewBox="0 0 72 44" fill="none">
+    <ellipse cx="38" cy="27" rx="18" ry="11" fill="#C9A84C"/>
+    <ellipse cx="56" cy="20" rx="8" ry="7" fill="#C9A84C"/>
+    <polygon points="64,19 72,21 64,23" fill="#B8943E"/>
+    <polygon points="20,27 4,20 20,34" fill="#C9A84C"/>
+    <ellipse cx="36" cy="20" rx="16" ry="8" fill="#E8D090" transform="rotate(-10 36 20)"/>
+    <line x1="56" y1="29" x2="50" y2="37" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="49" cy="38" rx="3" ry="2" fill="#7A9E7E"/>
+    <ellipse cx="53" cy="35" rx="2.5" ry="1.8" fill="#7A9E7E"/>
   </svg>
 
-  <!-- Decorative SVG: dove (center top) -->
-  <svg style="position:absolute;top:20px;left:50%;transform:translateX(-50%);opacity:0.18;" width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- body -->
-    <ellipse cx="34" cy="24" rx="16" ry="10" fill="#C9A84C"/>
-    <!-- head -->
-    <ellipse cx="50" cy="18" rx="7" ry="6" fill="#C9A84C"/>
-    <!-- beak -->
-    <polygon points="57,17 63,19 57,21" fill="#B8943E"/>
-    <!-- tail -->
-    <polygon points="18,24 4,18 18,30" fill="#C9A84C"/>
-    <!-- wing -->
-    <ellipse cx="32" cy="18" rx="14" ry="7" fill="#E8D090" transform="rotate(-12 32 18)"/>
-    <!-- olive branch line -->
-    <line x1="50" y1="26" x2="44" y2="33" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
-    <ellipse cx="43" cy="34" rx="3" ry="2" fill="#7A9E7E"/>
-    <ellipse cx="47" cy="31" rx="2.5" ry="1.8" fill="#7A9E7E"/>
+  <!-- Light ray bottom-left -->
+  <svg style="position:absolute;bottom:22px;left:32px;opacity:0.12;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <line x1="18" y1="0" x2="18" y2="36" stroke="#7B9EB9" stroke-width="1.5"/>
+    <line x1="0" y1="18" x2="36" y2="18" stroke="#7B9EB9" stroke-width="1.5"/>
+    <line x1="5" y1="5" x2="31" y2="31" stroke="#7B9EB9" stroke-width="1"/>
+    <line x1="31" y1="5" x2="5" y2="31" stroke="#7B9EB9" stroke-width="1"/>
   </svg>
 
-  <!-- Decorative stars/light rays bottom corners -->
-  <svg style="position:absolute;bottom:20px;left:24px;opacity:0.13;" width="32" height="32" viewBox="0 0 32 32" fill="none">
-    <line x1="16" y1="0" x2="16" y2="32" stroke="#C9A84C" stroke-width="1.5"/>
-    <line x1="0" y1="16" x2="32" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
-    <line x1="4" y1="4" x2="28" y2="28" stroke="#C9A84C" stroke-width="1"/>
-    <line x1="28" y1="4" x2="4" y2="28" stroke="#C9A84C" stroke-width="1"/>
-  </svg>
-  <svg style="position:absolute;bottom:20px;right:24px;opacity:0.10;" width="28" height="28" viewBox="0 0 28 28" fill="none">
-    <line x1="14" y1="0" x2="14" y2="28" stroke="#7B9EB9" stroke-width="1.5"/>
-    <line x1="0" y1="14" x2="28" y2="14" stroke="#7B9EB9" stroke-width="1.5"/>
-    <line x1="3" y1="3" x2="25" y2="25" stroke="#7B9EB9" stroke-width="1"/>
-    <line x1="25" y1="3" x2="3" y2="25" stroke="#7B9EB9" stroke-width="1"/>
-  </svg>
-
-  <p class="hero-eyebrow">Scripture · Prayer · Worship</p>
-  <h1>Faith for the Life You're Actually Living</h1>
-  <p>Scripture made clear. Prayers made personal. Worship songs for today. Daily encouragement grounded in God's word.</p>
-  <a href="prayers.html" class="btn-primary">Free Prayers</a>
-  <a href="#free-guide" class="btn-secondary">Get Free Devotional</a>
-</div>
-
-<!-- PRAYER DEDICATION BANNER -->
-<div style="background: linear-gradient(135deg, #3B5998 0%, #5C7BC4 100%); color: white; text-align: center; padding: 28px 24px;">
-  <div style="max-width: var(--max); margin: 0 auto;">
-    <p style="font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; margin: 0 0 8px;">🕊️ This Week's Prayer Dedication</p>
-    <p style="font-size: 1.25rem; font-weight: 700; margin: 0 0 6px;">Our prayers this week are dedicated to Julie D. from Connecticut</p>
-    <p style="font-size: 0.95rem; opacity: 0.9; margin: 0;">She is having surgery this week. We ask for God's healing hand, steady physicians, and deep peace that surpasses understanding. &ldquo;He heals the brokenhearted and binds up their wounds.&rdquo; &mdash; Psalm 147:3</p>
+  <p class="eyebrow">Scripture &middot; Prayer &middot; Worship</p>
+  <h1>Faith for the Life You&rsquo;re Actually Living</h1>
+  <p class="sub">Scripture made clear. Prayers made personal. Worship songs for today. Daily encouragement grounded in God&rsquo;s word.</p>
+  <div class="hero-btns">
+    <a href="prayers.html" class="btn-primary">Free Prayers</a>
+    <a href="#free-guide" class="btn-secondary">Get Free Devotional</a>
   </div>
 </div>
 
-<div style="background:white; border-bottom: 1px solid #E8E2D8;">
-  <div style="max-width:var(--max); margin:0 auto; padding: 40px 24px;">
-    <p class="section-label">Verse of the Day</p>
-    <div class="verse-block" id="verseBlock">
-      "Come to me, all you who are weary and burdened, and I will give you rest."
-      <span class="verse-ref">— Matthew 11:28</span>
-    </div>
-  </div>
-</div>
-
-<!-- DECORATIVE DIVIDER: crosses + stars -->
-<div style="text-align:center; padding: 12px 0 0; background: var(--ivory);">
-  <svg width="320" height="32" viewBox="0 0 320 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.25;">
-    <!-- left line -->
-    <line x1="0" y1="16" x2="110" y2="16" stroke="#C9A84C" stroke-width="1"/>
-    <!-- small star left -->
-    <line x1="120" y1="8" x2="120" y2="24" stroke="#C9A84C" stroke-width="1.5"/>
-    <line x1="112" y1="16" x2="128" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
-    <!-- center cross -->
-    <rect x="152" y="4" width="5" height="24" rx="2" fill="#C9A84C"/>
-    <rect x="143" y="12" width="23" height="5" rx="2" fill="#C9A84C"/>
-    <!-- small star right -->
-    <line x1="200" y1="8" x2="200" y2="24" stroke="#C9A84C" stroke-width="1.5"/>
-    <line x1="192" y1="16" x2="208" y2="16" stroke="#C9A84C" stroke-width="1.5"/>
-    <!-- right line -->
-    <line x1="210" y1="16" x2="320" y2="16" stroke="#C9A84C" stroke-width="1"/>
+<!-- DARK VERSE BAND -->
+<div class="verse-band">
+  <svg class="verse-band-cross" width="160" height="160" viewBox="0 0 160 160" fill="none">
+    <rect x="68" y="8" width="24" height="144" rx="8" fill="white"/>
+    <rect x="12" y="52" width="136" height="24" rx="8" fill="white"/>
   </svg>
+  <div class="verse-band-inner">
+    <p class="verse-band-label">Verse of the Day</p>
+    <p class="verse-band-text" id="verseBlock">
+      &ldquo;Come to me, all you who are weary and burdened, and I will give you rest.&rdquo;
+      <span class="verse-band-ref">&mdash; Matthew 11:28</span>
+    </p>
+  </div>
 </div>
 
 <!-- WHAT WE OFFER -->
-<section>
-  <p class="section-label">What You'll Find Here</p>
-  <h2 class="section-title">Everything You Need for a Daily Faith Life</h2>
-  <p class="section-sub">Not cheesy. Not generic. Real scripture, honest prayers, and worship that actually means something.</p>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-icon">🙏</div>
-      <h3>Prayers for Real Life</h3>
-      <p>Prayers for anxiety, grief, waiting, shame, work stress, healing, and hope. Honest words when you don't know what to say.</p>
+<div style="border-top:1px solid #E8E2D8; border-bottom:1px solid #E8E2D8;">
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="text-align:center;padding:40px 24px 8px;">
+      <p class="section-label">What You&rsquo;ll Find Here</p>
+      <h2 class="section-title">Everything for a Daily Faith Life</h2>
     </div>
-    <div class="card">
-      <div class="card-icon">📖</div>
-      <h3>Scripture in Plain Language</h3>
-      <p>What difficult passages actually mean — context, application, and the misconceptions that get in the way.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🎵</div>
-      <h3>New Worship Songs</h3>
-      <p>Original worship lyrics rooted in scripture. Emotionally honest. Simple enough to sing. Built for today's believer.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">☀️</div>
-      <h3>Daily Encouragement</h3>
-      <p>A verse, a reflection, and a short prayer — every day. Small enough to read in two minutes, real enough to carry with you.</p>
+    <div class="offer-grid">
+      <div class="offer-cell">
+        <div class="offer-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1.5" fill="#FDF6E8"/>
+            <path d="M18 10 C14 14, 12 17, 14 20 C15.5 22.5, 18 23, 18 26" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="18" cy="27.5" r="1.5" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <h3>Prayers for Real Life</h3>
+        <p>For anxiety, grief, waiting, shame, healing, and hope. Honest words when you don&rsquo;t know what to say.</p>
+      </div>
+      <div class="offer-cell">
+        <div class="offer-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="4" width="24" height="28" rx="3" stroke="#7A9E7E" stroke-width="1.5" fill="#F0F5F0"/>
+            <line x1="11" y1="12" x2="25" y2="12" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="11" y1="17" x2="25" y2="17" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="11" y1="22" x2="20" y2="22" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Scripture in Plain Language</h3>
+        <p>What difficult passages actually mean — context, application, and the misconceptions that get in the way.</p>
+      </div>
+      <div class="offer-cell">
+        <div class="offer-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="20" rx="12" ry="8" stroke="#7B9EB9" stroke-width="1.5" fill="#EFF3F7"/>
+            <line x1="26" y1="14" x2="26" y2="6" stroke="#7B9EB9" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="28" cy="6" r="2.5" fill="#7B9EB9"/>
+          </svg>
+        </div>
+        <h3>New Worship Songs</h3>
+        <p>Original worship lyrics rooted in scripture. Emotionally honest. Simple enough to sing. Built for today.</p>
+      </div>
+      <div class="offer-cell">
+        <div class="offer-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="10" stroke="#C9A84C" stroke-width="1.5" fill="#FDF6E8"/>
+            <line x1="18" y1="4" x2="18" y2="8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="28" x2="18" y2="32" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="18" x2="8" y2="18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="28" y1="18" x2="32" y2="18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="8" x2="11" y2="11" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="25" y1="25" x2="28" y2="28" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Daily Encouragement</h3>
+        <p>A verse, a reflection, and a short prayer — every day. Two minutes to read. Real enough to carry with you.</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<hr class="divider">
-
-<!-- DECORATIVE ANGEL WINGS -->
-<div style="text-align:center; padding: 12px 0 0; background: var(--ivory);">
-  <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.18;">
-    <!-- left wing -->
-    <path d="M100 30 C80 10, 40 5, 10 20 C30 22, 50 26, 70 32 C50 28, 20 30, 8 42 C28 38, 58 34, 80 38 C60 36, 30 44, 20 54 C42 46, 68 40, 88 44 Z" fill="#C9A84C"/>
-    <!-- right wing -->
-    <path d="M100 30 C120 10, 160 5, 190 20 C170 22, 150 26, 130 32 C150 28, 180 30, 192 42 C172 38, 142 34, 120 38 C140 36, 170 44, 180 54 C158 46, 132 40, 112 44 Z" fill="#C9A84C"/>
-    <!-- center halo circle -->
-    <circle cx="100" cy="14" r="9" stroke="#C9A84C" stroke-width="2" fill="none"/>
-  </svg>
+<!-- SCRIPTURE PULL-QUOTE -->
+<div class="scripture-highlight">
+  <div class="scripture-highlight-inner">
+    <!-- Angel wings + halo -->
+    <svg width="180" height="54" viewBox="0 0 180 54" fill="none" style="display:block;margin:0 auto 24px;opacity:0.22;">
+      <path d="M90 28 C72 10, 38 6, 10 18 C28 20, 46 24, 64 30 C46 26, 18 28, 8 38 C26 34, 52 30, 72 35 C54 33, 26 40, 18 50 C38 43, 62 37, 80 41 Z" fill="#C9A84C"/>
+      <path d="M90 28 C108 10, 142 6, 170 18 C152 20, 134 24, 116 30 C134 26, 162 28, 172 38 C154 34, 128 30, 108 35 C126 33, 154 40, 162 50 C142 43, 118 37, 100 41 Z" fill="#C9A84C"/>
+      <circle cx="90" cy="12" r="10" stroke="#C9A84C" stroke-width="2" fill="none"/>
+    </svg>
+    <blockquote>
+      &ldquo;The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul.&rdquo;
+    </blockquote>
+    <cite>&mdash; PSALM 23:1&ndash;3</cite>
+  </div>
 </div>
 
 <!-- FEATURED PRAYERS -->
-<section>
-  <p class="section-label">Prayers</p>
-  <h2 class="section-title">When You Don't Know What to Pray</h2>
-  <p class="section-sub">These are for the moments when you need words but can't find them yourself.</p>
-
-  <div class="prayer-card">
-    <h3>A Prayer for Anxiety</h3>
-    <span class="prayer-tag">Peace</span>
-    <p>Lord, my mind won't slow down and my chest feels tight with worry I can't name.
-I know You said not to be anxious — but I am.
-So I'm coming to You not with peace, but asking for it.
-Take the weight I've been carrying like it's mine to fix.
-Remind me that You are already in what I'm afraid of.
+<div class="prayers-section">
+  <div class="prayers-section-inner">
+    <div class="prayers-header">
+      <!-- Decorative cross divider -->
+      <svg width="280" height="24" viewBox="0 0 280 24" fill="none" style="display:block;margin:0 auto 20px;opacity:0.3;">
+        <line x1="0" y1="12" x2="110" y2="12" stroke="#C9A84C" stroke-width="1"/>
+        <rect x="131" y="4" width="4" height="16" rx="1.5" fill="#C9A84C"/>
+        <rect x="124" y="10" width="18" height="4" rx="1.5" fill="#C9A84C"/>
+        <line x1="150" y1="12" x2="280" y2="12" stroke="#C9A84C" stroke-width="1"/>
+      </svg>
+      <p class="section-label">Prayers</p>
+      <h2 class="section-title">When You Don&rsquo;t Know What to Pray</h2>
+      <p class="section-sub" style="margin:0 auto;">For the moments when you need words but can&rsquo;t find them yourself.</p>
+    </div>
+    <div class="prayers-two-col">
+      <div class="prayer-tile">
+        <h3>A Prayer for Anxiety</h3>
+        <span class="tag">Peace</span>
+        <p>Lord, my mind won&rsquo;t slow down and my chest feels tight with worry I can&rsquo;t name.
+I know You said not to be anxious &mdash; but I am.
+So I&rsquo;m coming to You not with peace, but asking for it.
+Take the weight I&rsquo;ve been carrying like it&rsquo;s mine to fix.
+Remind me that You are already in what I&rsquo;m afraid of.
 Let me breathe. Let me trust. Let me rest in You.
 Amen.</p>
-    <div class="prayer-actions">
-      <button class="btn-audio" onclick="playPrayer(this, 'anxiety')">▶ Listen</button>
-      <a href="prayers.html" style="color:var(--text-light); font-size:0.9rem;">More prayers →</a>
-    </div>
-  </div>
-
-  <div class="prayer-card">
-    <h3>A Prayer for Waiting</h3>
-    <span class="prayer-tag">Patience</span>
-    <p>Father, I've been waiting a long time.
+        <div class="actions">
+          <button class="btn-audio" onclick="playPrayer(this,'anxiety')">&#9654; Listen</button>
+          <a href="prayers.html" style="color:#7A7A7A;font-size:0.88rem;">More prayers &rarr;</a>
+        </div>
+      </div>
+      <div class="prayer-tile">
+        <h3>A Prayer for Waiting</h3>
+        <span class="tag">Patience</span>
+        <p>Father, I&rsquo;ve been waiting a long time.
 For the door to open. For the answer to come. For things to change.
-I don't understand Your timing and I won't pretend I do.
+I don&rsquo;t understand Your timing and I won&rsquo;t pretend I do.
 But I choose to trust that You are working in the silence.
-That this season has a purpose I can't see yet.
+That this season has a purpose I can&rsquo;t see yet.
 Hold my hope steady. Keep me from bitterness.
 Let me wait well.
 Amen.</p>
-    <div class="prayer-actions">
-      <button class="btn-audio" onclick="playPrayer(this, 'waiting')">▶ Listen</button>
-      <a href="prayers.html" style="color:var(--text-light); font-size:0.9rem;">More prayers →</a>
+        <div class="actions">
+          <button class="btn-audio" onclick="playPrayer(this,'waiting')">&#9654; Listen</button>
+          <a href="prayers.html" style="color:#7A7A7A;font-size:0.88rem;">More prayers &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="prayers.html" class="btn-primary">See All Prayers</a>
     </div>
   </div>
+</div>
 
-  <div style="text-align:center; margin-top:40px;">
-    <a href="prayers.html" class="btn-primary">See All Prayers</a>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- FEATURED SONG -->
-<section>
-  <p class="section-label">Worship</p>
-  <h2 class="section-title">Songs That Mean Something</h2>
-  <p class="section-sub">Written from scripture. Honest about struggle. Built to be sung by real people.</p>
-
-  <div class="song-card">
-    <h3>Still Waters</h3>
-    <p class="song-meta">Based on Psalm 23 · Worship Ballad</p>
-    <div class="song-lyrics">
-<span class="chorus">Verse 1:</span>
+<!-- SONG SECTION (warm dark) -->
+<div class="song-section">
+  <div class="song-section-inner">
+    <p class="section-label">Worship</p>
+    <h2>Songs That Mean Something</h2>
+    <p class="sub">Written from scripture. Honest about struggle. Built to be sung by real people.</p>
+    <div class="song-tile">
+      <h3>Still Waters</h3>
+      <p class="meta">Based on Psalm 23 &middot; Worship Ballad</p>
+      <div class="lyrics"><span class="chorus-label">Verse 1:</span>
 When the path runs dry and I cannot see
 Through the valley dark where You lead me
-I won't walk alone, You have promised this
+I won&rsquo;t walk alone, You have promised this
 Even here, even now, You are near
 
-<span class="chorus">Chorus:</span>
+<span class="chorus-label">Chorus:</span>
 You lead me to still waters
 You restore my weary soul
 In the shadow of the valley
@@ -227,32 +469,33 @@ For You walk beside me still
 You lead me to still waters
 And I will follow where You will
 
-<span class="chorus">Verse 2:</span>
+<span class="chorus-label">Verse 2:</span>
 Goodness follows close like a faithful friend
 And Your mercy stretches past where I can bend
 Surely all my days You will hold me fast
-I will dwell in Your house, home at last
+I will dwell in Your house, home at last</div>
+      <div style="margin-top:24px;display:flex;gap:12px;align-items:center;">
+        <button class="btn-audio" onclick="playSong(this,'still-waters')">&#9654; Listen</button>
+        <a href="songs.html" style="color:#C9A84C;font-size:0.88rem;">More songs &rarr;</a>
+      </div>
     </div>
-    <div class="prayer-actions" style="margin-top:24px;">
-      <button class="btn-audio" onclick="playSong(this, 'still-waters')">▶ Listen</button>
-      <a href="songs.html" style="color:var(--text-light); font-size:0.9rem;">More songs →</a>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="songs.html" class="btn-primary">See All Songs</a>
     </div>
   </div>
-
-  <div style="text-align:center; margin-top:40px;">
-    <a href="songs.html" class="btn-primary">See All Songs</a>
-  </div>
-</section>
+</div>
 
 <!-- EMAIL CAPTURE -->
-<div class="email-section" id="free-guide">
-  <h2>7 Prayers for Hard Days — Free</h2>
-  <p>A short collection of honest prayers for the moments faith feels hardest. No fluff. Just words that help.</p>
-  <form class="email-form" onsubmit="handleSignup(event)">
-    <input type="email" placeholder="Your email address" required>
-    <button type="submit">Send It to Me</button>
-  </form>
-  <p style="margin-top:16px; font-size:0.82rem; color:#888;">No spam. Unsubscribe any time.</p>
+<div class="email-v2" id="free-guide">
+  <div class="email-v2-inner">
+    <h2>7 Prayers for Hard Days &mdash; Free</h2>
+    <p class="sub">A short collection of honest prayers for the moments faith feels hardest. No fluff. Just words that help.</p>
+    <form class="email-form" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Send It to Me</button>
+    </form>
+    <p style="margin-top:16px;font-size:0.8rem;color:#666;">No spam. Unsubscribe any time.</p>
+  </div>
 </div>
 
 <footer>
@@ -263,7 +506,7 @@ I will dwell in Your house, home at last
     <a href="about.html">About</a>
     <a href="privacy.html">Privacy</a>
   </div>
-  <p>© 2026 Faithful Passages · Scripture made clear. Prayers made personal. Faith made daily.</p>
+  <p>© 2026 Faithful Passages &middot; Scripture made clear. Prayers made personal. Faith made daily.</p>
 </footer>
 
 <script src="app.js"></script>

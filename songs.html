@@ -3,10 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Worship Songs — Faithful Passages</title>
-  <meta name="description" content="Original worship songs rooted in scripture. Honest, singable, and built for today's believer.">
+  <title>Worship Songs & Hymns — Faithful Passages</title>
+  <meta name="description" content="Worship songs, classic hymns, and original lyrics with audio. Amazing Grace, How Great Thou Art, 10,000 Reasons, and more — with reflection and prayer.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    .songs-hero { padding: 56px 24px 40px; text-align: center; }
+    .songs-hero h1 { font-size: 2rem; margin-bottom: 12px; }
+    .songs-hero p { max-width: 560px; margin: 0 auto; color: #555; font-size: 1rem; }
+
+    .filter-bar {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      padding: 0 24px 32px;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 30px; border: 1.5px solid #c9b99a;
+      background: white; color: #5a4a3a; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #5a4a3a; color: white; border-color: #5a4a3a;
+    }
+
+    .songs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .song-tile {
+      background: white;
+      border: 1px solid #e8e0d5;
+      border-radius: 14px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .song-tile:hover {
+      box-shadow: 0 6px 24px rgba(90,74,58,0.13);
+      transform: translateY(-2px);
+    }
+    .song-tile .tile-tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #9b8b7a;
+    }
+    .song-tile .tile-tag.classic { color: #7a6b9b; }
+    .song-tile .tile-tag.original { color: #4a7a6b; }
+    .song-tile h3 {
+      font-size: 1.1rem; font-weight: 700; color: #2c1f14;
+      margin: 0; line-height: 1.3;
+    }
+    .song-tile .tile-sub {
+      font-size: 0.82rem; color: #888; margin: 0;
+    }
+    .song-tile .tile-listen {
+      margin-top: auto; padding-top: 14px;
+      font-size: 0.82rem; font-weight: 600; color: #7a5c3a;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .song-tile .tile-listen::before {
+      content: '▶';
+      width: 22px; height: 22px; background: #7a5c3a; color: white;
+      border-radius: 50%; display: inline-flex; align-items: center;
+      justify-content: center; font-size: 0.6rem; padding-left: 2px;
+      flex-shrink: 0;
+    }
+
+    .songs-divider {
+      text-align: center; padding: 20px 24px 8px;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #aaa; font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,167 +95,177 @@
   </ul>
 </nav>
 
-<div class="hero" style="padding:56px 24px 48px;">
-  <p class="hero-eyebrow">Worship Songs</p>
-  <h1>Songs That Mean Something</h1>
-  <p>Original worship lyrics rooted in scripture. Emotionally honest. Simple enough to sing. Built for today's believer.</p>
+<div class="songs-hero">
+  <p class="hero-eyebrow">Worship &amp; Hymns</p>
+  <h1>Songs That Carry You</h1>
+  <p>Classic hymns, beloved worship songs, and original lyrics — each with audio and a reflection to deepen your time with God.</p>
 </div>
 
-<section>
-  <p class="section-label">Psalm 23</p>
-  <div class="song-card">
-    <h3>Still Waters</h3>
-    <p class="song-meta">Based on Psalm 23 · Worship Ballad</p>
-    <div class="song-lyrics">
-<span class="chorus">Verse 1</span>
-When the path runs dry and I cannot see
-Through the valley dark where You lead me
-I won't walk alone, You have promised this
-Even here, even now, You are near
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterSongs('all', this)">All Songs</button>
+  <button class="filter-btn" onclick="filterSongs('classic', this)">Classic Hymns</button>
+  <button class="filter-btn" onclick="filterSongs('modern', this)">Modern Worship</button>
+  <button class="filter-btn" onclick="filterSongs('original', this)">Original</button>
+</div>
 
-<span class="chorus">Chorus</span>
-You lead me to still waters
-You restore my weary soul
-In the shadow of the valley
-Your rod and staff make me whole
-I will fear no evil
-For You walk beside me still
-You lead me to still waters
-And I will follow where You will
+<div class="songs-grid" id="songsGrid">
 
-<span class="chorus">Verse 2</span>
-Goodness follows close like a faithful friend
-And Your mercy stretches past where I can bend
-Surely all my days You will hold me fast
-I will dwell in Your house, home at last
+  <!-- CLASSIC HYMNS -->
+  <a href="song-amazing-grace.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>Amazing Grace</h3>
+    <p class="tile-sub">John Newton, 1772 · Based on Ephesians 2:8</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">[Chorus]</span>
+  <a href="song-how-great-thou-art.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>How Great Thou Art</h3>
+    <p class="tile-sub">Carl Boberg, 1885 · Based on Psalm 8</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Bridge</span>
-Even in the dark, even in the deep
-You are the Shepherd who never sleeps
-I lay down my fear, I lay down my fight
-You are my portion, my peace, my light
-    </div>
-    <div class="prayer-actions" style="margin-top:24px;">
-      <button class="btn-audio" onclick="playSong(this, 'still-waters')">▶ Listen</button>
-    </div>
-  </div>
+  <a href="song-it-is-well.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>It Is Well With My Soul</h3>
+    <p class="tile-sub">Horatio Spafford, 1873 · Based on John 14:27</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-  <div class="song-card">
-    <h3>Enough</h3>
-    <p class="song-meta">Based on 2 Corinthians 12:9 · Contemporary Worship</p>
-    <div class="song-lyrics">
-<span class="chorus">Verse 1</span>
-I came with my hands full of things I thought I needed
-I came with my plans and my pride
-But standing here empty, I finally see it —
-Your grace is the thing I've been trying to find
+  <a href="song-great-is-thy-faithfulness.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>Great Is Thy Faithfulness</h3>
+    <p class="tile-sub">Thomas Chisholm, 1923 · Based on Lamentations 3:22-23</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Chorus</span>
-Your grace is enough, it's enough for me
-When I am weak, You are strong in me
-I don't need more than what You've already given
-Your grace is enough, it's enough
+  <a href="song-be-thou-my-vision.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>Be Thou My Vision</h3>
+    <p class="tile-sub">Ancient Irish hymn · Based on Psalm 27:1</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Verse 2</span>
-I've tried to be worthy, I've tried to be ready
-I've carried the weight of my own
-But You said Your power is made in my weakness
-So I'll stop trying to do this alone
+  <a href="song-blessed-assurance.html" class="song-tile" data-cat="classic">
+    <span class="tile-tag classic">Classic Hymn</span>
+    <h3>Blessed Assurance</h3>
+    <p class="tile-sub">Fanny Crosby, 1873 · Based on Hebrews 10:22</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">[Chorus]</span>
+  <!-- MODERN WORSHIP -->
+  <a href="song-10000-reasons.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>10,000 Reasons (Bless the Lord)</h3>
+    <p class="tile-sub">Matt Redman, 2011 · Based on Psalm 103</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Bridge</span>
-Not by my strength, not by my will
-But by Your Spirit, I'm standing still
-You are enough, You are enough
-You are enough for me
-    </div>
-    <div class="prayer-actions" style="margin-top:24px;">
-      <button class="btn-audio" onclick="playSong(this, 'enough')">▶ Listen</button>
-    </div>
-  </div>
+  <a href="song-oceans.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>Oceans (Where Feet May Fail)</h3>
+    <p class="tile-sub">Hillsong United, 2013 · Based on Matthew 14:29</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-  <div class="song-card">
-    <h3>Come As You Are</h3>
-    <p class="song-meta">Based on Matthew 11:28–30 · Congregational</p>
-    <div class="song-lyrics">
-<span class="chorus">Verse 1</span>
-You don't have to clean yourself up to come
-You don't have to fix what you've done
-He's not waiting for you to be better
-He's calling you right where you are
+  <a href="song-good-good-father.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>Good Good Father</h3>
+    <p class="tile-sub">Chris Tomlin, 2014 · Based on Romans 8:15</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Chorus</span>
-Come as you are, come as you are
-Bring your broken, bring your scars
-He is gentle, He is kind
-Leave your heavy load behind
-Come as you are
+  <a href="song-way-maker.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>Way Maker</h3>
+    <p class="tile-sub">Sinach, 2015 · Based on Isaiah 43:16-19</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Verse 2</span>
-You don't have to earn what He's offering
-You don't have to prove you belong
-His yoke is easy, His burden is light
-He'll carry what you've carried too long
+  <a href="song-what-a-beautiful-name.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>What a Beautiful Name</h3>
+    <p class="tile-sub">Hillsong Worship, 2016 · Based on Philippians 2:9-11</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">[Chorus]</span>
+  <a href="song-reckless-love.html" class="song-tile" data-cat="modern">
+    <span class="tile-tag">Modern Worship</span>
+    <h3>Reckless Love</h3>
+    <p class="tile-sub">Cory Asbury, 2017 · Based on Luke 15:4-7</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Bridge</span>
-There is rest for the weary
-There is hope for the lost
-There is grace for the broken
-And it's worth every cost
-Come, come, come as you are
-    </div>
-    <div class="prayer-actions" style="margin-top:24px;">
-      <button class="btn-audio" onclick="playSong(this, 'come-as-you-are')">▶ Listen</button>
-    </div>
-  </div>
+  <!-- ORIGINAL -->
+  <a href="song-still-my-god-2026-07-31.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Still My God</h3>
+    <p class="tile-sub">Based on Habakkuk 3:17-18 · Lament / Anthem</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-  <div class="song-card">
-    <h3>Hold Fast</h3>
-    <p class="song-meta">Based on Hebrews 10:23 · Anthem</p>
-    <div class="song-lyrics">
-<span class="chorus">Verse 1</span>
-When the storm rolls in and the night grows long
-When the faith I had doesn't feel so strong
-I remember the promise You made to me
-That You who began this will see it complete
+  <a href="song-even-here-2026-07-25.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Even Here</h3>
+    <p class="tile-sub">Based on Psalm 139 · Worship</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Chorus</span>
-Hold fast to the hope that does not bend
-Hold fast to the One who holds the end
-He is faithful, He is true
-Every promise He has made He will do
-Hold fast
+  <a href="song-where-else-would-i-go-2026-07-28.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Where Else Would I Go</h3>
+    <p class="tile-sub">Based on John 6:68 · Contemporary</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Verse 2</span>
-When the doubt creeps in and the questions rise
-When I can't see Your hand but I trust Your eyes
-I will anchor my soul in what I know
-You are the same God from long ago
+  <a href="song-though-i-cannot-see-2026-08-04.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Though I Cannot See</h3>
+    <p class="tile-sub">Based on 2 Corinthians 5:7 · Worship</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">[Chorus]</span>
+  <a href="song-still-you-hold-me-2026-07-07.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Still You Hold Me</h3>
+    <p class="tile-sub">Based on Isaiah 41:10 · Worship Ballad</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
 
-<span class="chorus">Bridge</span>
-Not because I feel it
-Not because I see it
-But because He said it
-And He cannot lie
-Hold fast, hold fast
-    </div>
-    <div class="prayer-actions" style="margin-top:24px;">
-      <button class="btn-audio" onclick="playSong(this, 'hold-fast')">▶ Listen</button>
-    </div>
-  </div>
-</section>
+  <a href="song-come-back-to-me-2026-07-19.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Come Back to Me</h3>
+    <p class="tile-sub">Based on Hosea 14:1 · Invitation</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
+
+  <a href="song-even-in-the-dark-2026-07-10.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Even in the Dark</h3>
+    <p class="tile-sub">Based on Psalm 88 · Lament</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
+
+  <a href="song-even-now-you-hold-2026-07-22.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Even Now You Hold</h3>
+    <p class="tile-sub">Based on Romans 8:38-39 · Worship</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
+
+  <a href="song-where-can-i-go-2026-07-15.html" class="song-tile" data-cat="original">
+    <span class="tile-tag original">Original</span>
+    <h3>Where Can I Go</h3>
+    <p class="tile-sub">Based on Psalm 139:7-10 · Worship</p>
+    <div class="tile-listen">Listen &amp; Reflect</div>
+  </a>
+
+</div>
 
 <!-- EMAIL CAPTURE -->
 <div class="email-section">
-  <h2>Get New Songs Delivered Free</h2>
-  <p>New worship lyrics and devotional content, straight to your inbox.</p>
+  <h2>New Songs Every Week</h2>
+  <p>Classic hymns, modern worship, and original songs — delivered free to your inbox.</p>
   <form class="email-form" onsubmit="handleSignup(event)">
     <input type="email" placeholder="Your email address" required>
     <button type="submit">Subscribe Free</button>
@@ -197,10 +282,23 @@ Hold fast, hold fast
     <a href="privacy.html">Privacy</a>
   </div>
   <p>© 2026 Faithful Passages · Scripture made clear. Prayers made personal. Faith made daily.</p>
-
   <p style="margin-top:10px;font-size:.8em;color:rgba(255,255,255,.45)">This site is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.</p>
 </footer>
 
 <script src="app.js"></script>
+<script>
+function filterSongs(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.song-tile').forEach(tile => {
+    if (cat === 'all' || tile.dataset.cat === cat) {
+      tile.style.display = '';
+    } else {
+      tile.style.display = 'none';
+    }
+  });
+}
+</script>
+
 </body>
 </html>

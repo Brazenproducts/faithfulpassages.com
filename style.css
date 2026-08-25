@@ -55,6 +55,15 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--charcoal); }
+.nav-donate {
+  background: var(--sage, #7A9E7E) !important;
+  color: white !important;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s !important;
+}
+.nav-donate:hover { background: #5a7a5e !important; transform: scale(1.04); }
 
 /* HERO */
 .hero {
